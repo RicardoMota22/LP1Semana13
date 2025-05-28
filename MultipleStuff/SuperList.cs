@@ -36,8 +36,8 @@ namespace MultipleStuff
 
         public readonly struct MinMaxResult
         {
-            public readonly double Min {get;}
-            public readonly double Max {get;}
+            public readonly double Min { get; }
+            public readonly double Max { get; }
 
             public MinMaxResult(double min, double max)
             {
@@ -71,5 +71,56 @@ namespace MultipleStuff
             return new MinMaxResult(min, max);
 
         }
+
+        //3
+        public Tuple<double, double> GetMinMax3()
+        {
+            if (this.Count == 0)
+            {
+                throw new InvalidOperationException("List is empty");
+            }
+
+            double min = this[0];
+            double max = this[0];
+
+            foreach (double val in this)
+            {
+                if (val < min)
+                {
+                    min = val;
+                }
+                if (val > max)
+                {
+                    max = val;
+                }
+            }
+            return Tuple.Create(min, max);
+        }
+
+        public (double Min, double Max) GetMinMax4()
+        {
+            if (this.Count == 0)
+            {
+                throw new InvalidOperationException("List is empty");
+            }
+
+            double min = this[0];
+            double max = this[0];
+
+            foreach (double val in this)
+            {
+                if (val < min)
+                {
+                    min = val;
+                }
+                if (val > max)
+                {
+                    max = val;
+                }
+            }
+            return (Min: min, Max: max);
+        }
+        
+        
     }
 }
